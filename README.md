@@ -2,8 +2,8 @@
 
 <img src="layout.png"/>
 
-Projeto feito em php, sass, jquery junto com microframework, apache e mysql<br><br>
-O projeto consite criar uma conta com informações que vão ser exibidas na busca podendo mandar o usuario<br> para a lixeira, atendidos ou mesmo ver todos os usuarios cadastrados, ao clicar no usuario exibi uma tela com informações privadas
+Projeto feito em php, sass, jquery, ajax junto com microframework, apache e mysql<br><br>
+O projeto consite criar uma conta com informações que vão ser exibidas na busca, incluindo o upload e tratamento de imagem, podendo mandar o usuario<br> para a lixeira, atendidos ou mesmo ver todos os usuarios cadastrados, ao clicar no usuario exibi uma tela com informações privadas
 
 <img src="layout2.png"/>
 
