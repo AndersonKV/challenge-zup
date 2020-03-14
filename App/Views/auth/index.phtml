@@ -1,0 +1,184 @@
+<div class="container-loggin">
+    <form action="/login" method="post" class=" form-login">
+        <input class="email" value="<?= $this->view->user['email'] ?>" type="email" name="email" placeholder="Email">
+        <input class="password" value="<?= $this->view->user['password'] ?>" type="password" name="password" placeholder="Password">
+        <div>
+            <input type="submit" value="Enviar" />
+            <input type="button" class="btn-register" value="Registrar" />
+        </div>
+    </form>
+
+    <form action="/register" method="POST" enctype="multipart/form-data" class="none form-register">
+
+
+
+        <label>Registrar</label>
+        <?php if ($this->view->errorCadastro) : ?>
+            <span class="text-red">*Formulario invalido, certifique-se de escrever corretamenta</span>
+        <?php endif ?>
+
+        <?php if ($this->view->errorEmailExist) : ?>
+            <span class="text-red">*email ja foi registrado</span>
+        <?php endif ?>
+
+        <input type="text" id="name" name="name" placeholder="name">
+        <input type="email" id="email" name="email" placeholder="email">
+        <input type="text" id="birthday" name="birthday" placeholder="birthday">
+        <input type="text" id="address" name="address" placeholder="address">
+
+        <div class="form-calendar">
+
+        </div>
+
+        <input type="text" id="phone_number" name="phone_number" placeholder="phone">
+        <input type="password" id="password" name="password" placeholder="password">
+
+        <!-- MAX_FILE_SIZE deve preceder o campo input -->
+        <input type="hidden" name="MAX_FILE_SIZE" value="90000" />
+
+        <!-- O Nome do elemento input determina o nome da array $_FILES -->
+        Não muito grande <input name="userfile" type="file" />
+
+
+        <input type="submit" value="Registrar" />
+        <input type="button" class="btn-back" value="voltar" />
+
+    </form>
+
+
+</div>
+
+
+
+<script>
+    //data completa
+    const date = new Date();
+    //mes
+    const month = date.getMonth();
+    //ano
+    const dateFullYear = date.getFullYear();
+
+    //pega todos os dias do mes
+    function daysInMonth(month, year) {
+        return new Date(year, month, 0).getDate();
+    }
+
+    //dias
+    const days = daysInMonth(month, dateFullYear);
+
+    //  console.log(`dia - ${days}`);
+    //  console.log(`mes - ${month}`);
+    //  console.log(`ano - ${dateFullYear}`);
+    //  console.log(`date - ${date}`);
+    console.log(`dia - ${days}`);
+
+    function setDayInMonth(setDays) {
+        const countDay = []
+        //conta os dias do mes e repassa para countDay
+        for (i = 1; i <= setDays; ++i) {
+            countDay.push(i);
+        }
+
+        const templateStringDay = countDay.map((day, index) => {
+            return `<option value="${day}">${day}</option>`
+        }).join('');
+
+        //seta id e name do select
+        const select = document.createElement("select");
+        select.id = 'day';
+        select.name = 'day';
+        select.innerHTML = templateStringDay;
+
+        const verifyDayExist = document.querySelector('#day');
+        //faz a verificação se select ja existe, se sim remove e adiciona novo
+        if (verifyDayExist != null) {
+            verifyDayExist.remove();
+        }
+
+        document.querySelector('.form-calendar').insertBefore(
+            select, document.querySelector('.form-calendar').childNodes[0]
+        );
+
+    }
+    //evoca a função que seta os dias
+    setDayInMonth(daysInMonth(0, dateFullYear));
+
+    function GetMonth(props) {
+
+        const model = `
+                <option value="0 January" name="January">January</option>
+                <option value="1 February" name="February">February</option>
+                <option value="2 March">March</option>
+                <option value="3 April">April</option>
+                <option value="4 May">May</option>
+                <option value="5 June">June</option>
+                <option value="6 July">July</option>
+                <option value="7 August">August</option>
+                <option value="8 September">September</option>
+                <option value="9 October">October</option>
+                <option value="10 November">November</option>
+                <option value="11 December">December</option>
+                `;
+
+        const select = document.createElement("select");
+        //  select.id = 'month';
+        select.name = 'month';
+        select.innerHTML = model;
+        document.querySelector('.form-calendar').appendChild(select);
+
+        select.addEventListener("change", function(event) {
+            const mes = this.value.split(" ");
+            //divide e o primeiro indice é o numero do mes
+            setDayInMonth(daysInMonth(mes[0], dateFullYear));
+        });
+
+    }
+    //seta o mes
+    GetMonth();
+
+    function GetYear(props) {
+        let countYear = [];
+        let i;
+
+        for (i = 1990; i <= dateFullYear; i++) {
+            countYear.push(i);
+        }
+
+        const templateStringYear = countYear.map((year, index) => {
+            return `<option value="${year}">${year}</option>`
+        }).join('');
+
+        const select = document.createElement("select");
+        select.id = 'year';
+        select.name = 'year';
+        select.innerHTML = templateStringYear;
+        document.querySelector('.form-calendar').appendChild(select);
+
+    }
+
+    GetYear();
+
+
+
+    //esconde o form-login e mostra o form-register
+    $('.btn-register').click(function() {
+        $('.form-login .email').val('');
+        $('.form-login .password').val('');
+
+
+        $('.form-login').addClass('none');
+        $('.form-register').removeClass('none')
+        //console.log($(this).hasClass("none"))
+
+
+    });
+    //esconde o form-register e form-login
+    $('.btn-back').click(function() {
+        $('.form-login .email').val('');
+        $('.form-login .password').val('');
+
+        $('.form-login').removeClass('none')
+        $('.form-register').addClass('none');
+
+    });
+</script>

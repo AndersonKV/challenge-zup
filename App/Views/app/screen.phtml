@@ -1,0 +1,53 @@
+ <div class="container-screen">
+     <button class="screen-back">
+         <i class="fas fa-arrow-left"></i>
+     </button>
+
+     <div class="screen-up">
+     </div>
+     <div class="screen-down"></div>
+     <div class="screen-div">
+
+         <?php if (isset($this->view->user)) : ?>
+
+             <div class="screen-div-up">
+                 <?php if (isset($this->view->user['image'])) : ?>
+                     <img class="out-side--img" alt="imagem" src=" <?= 'assets/upload/' . $this->view->user['image'] ?>" />
+                 <?php endif; ?>
+
+             </div>
+             <div class="screen-div-down">
+
+                 <div class="screen-infos">
+                     <div class="show-message">
+                         <h5 class="title"></h5>
+                         <h2 class="sub-title"> </h2>
+                     </div>
+                     <div class="screen-sub-infos">
+                         <span class="screen-name"><i class="fas fa-user"></i></span>
+                         <span class="screen-email"><i class="far fa-envelope"></i></span>
+                         <span class="screen-calendar"><i class="far fa-calendar-alt"></i></span>
+                         <span class="screen-city"><i class="fas fa-location-arrow"></i></span>
+                         <span class="screen-phone"><i class="fas fa-phone-volume"></i></span>
+                         <span class="screen-key"><i class="fas fa-key"></i></span>
+                     </div>
+                 </div>
+             </div>
+
+         <?php endif; ?>
+
+     </div>
+
+ </div>
+
+ <script>
+     var name = "<?php echo $this->view->user['name'] ?>";
+     var image = "<?php echo $this->view->user['image'] ?>";
+     var email = "<?php echo $this->view->user['email'] ?>";
+     var birthday = "<?php echo $this->view->user['birthday'] ?>";
+     var address = "<?php echo $this->view->user['address'] ?>";
+     var phone_number = "<?php echo $this->view->user['phone_number'] ?>";
+     var password = "<?php echo $this->view->user['password'] ?>";
+ </script>
+
+ <script src="/assets/js/main-screen.js"></script>

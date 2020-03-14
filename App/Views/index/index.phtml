@@ -1,0 +1,50 @@
+ <div class="container-loggin">
+     <form action="/login" method="post" class=" form-login">
+         <input class="email" value="<?= $this->view->user['email'] ?>" type="email" name="email" placeholder="Email">
+         <input class="password" value="<?= $this->view->user['password'] ?>" type="password" name="password" placeholder="Password">
+         <div>
+             <input type="submit" value="Enviar" />
+             <input type="button" class="btn-register" value="Registrar" />
+         </div>
+     </form>
+
+     <form action="/register" method="POST" enctype="multipart/form-data" class="none form-register">
+
+         <label>Registrar</label>
+         <?php if ($this->view->errorCadastro) : ?>
+             <span class="text-red">*Formulario invalido, certifique-se de escrever corretamenta</span>
+         <?php endif ?>
+
+         <?php if ($this->view->errorEmailExist) : ?>
+             <span class="text-red">*email ja foi registrado</span>
+         <?php endif ?>
+
+         <input type="text" id="name" name="name" placeholder="name">
+         <input type="email" id="email" name="email" placeholder="email">
+         <!-- <input type="text" id="birthday" name="birthday" placeholder="birthday"> -->
+         <input type="text" id="address" name="address" placeholder="address">
+
+         <div class="form-calendar">
+
+         </div>
+
+         <input type="text" id="phone_number" name="phone_number" maxlength="" placeholder="phone (000)-0000-0000">
+         <input type="password" id="password" name="password" placeholder="password">
+
+         <!-- MAX_FILE_SIZE deve preceder o campo input -->
+         <input type="hidden" name="MAX_FILE_SIZE" value="90000" />
+
+         <!-- O Nome do elemento input determina o nome da array $_FILES -->
+         Não muito grande <input name="userfile" type="file" />
+
+
+         <input type="submit" value="Registrar" />
+         <input type="button" class="btn-back" value="voltar" />
+
+     </form>
+
+
+ </div>
+
+
+ <script src="/assets/js/main-index.js"></script>

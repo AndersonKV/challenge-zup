@@ -1,0 +1,71 @@
+<header>
+    <ul>
+        <div><a href="/">Zup</a></div>
+        <div>
+            <form action="/search" method="post">
+                <i class="fas fa-search"></i><input name="search" id="search" type="text" placeholder="Buscar" />
+            </form>
+        </div>
+        <div><a href="/sair">Sair</a></div>
+
+        <div>
+            <?php foreach ($this->view->user as $fileDestination => $user) : ?>
+                <?php if ($user['id'] == $_SESSION['id']) : ?>
+                    <img class="image-perfil" alt="imagem" src=" <?= 'assets/upload/' . $user['image'] ?>" />
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+        </div>
+    </ul>
+</header>
+
+<div class="container">
+    <aside>
+        <div class="aside-div">
+            <div><span id="todos"><i class="fas fa-square"></i> Todos</span></div>
+            <div><span id="attended"><i class="fas fa-check-double"></i> Atendidos</span></div>
+            <div><span id="trash"><i class="fas fa-trash-alt"></i> Lixeira</span></div>
+        </div>
+    </aside>
+    <div class="out-side">
+
+
+
+        <?php foreach ($this->view->user as $user) : ?>
+
+            <?php if ($user['id'] != $_SESSION['id']) : ?>
+                <?php if ($user['todo'] === 'attended') : ?>
+
+                    <div class="row" id="<?= $user['id'] ?>">
+                        <div class="out-side--perfil">
+                            <img class="out-side--img" alt="imagem" src=" <?= 'assets/upload/' . $user['image'] ?>" />
+
+                            <span class="out-side--name"><?= $user['name'] ?></span>
+                            <span class="out-side--email"><?= $user['email'] ?></span>
+                            <span class="out-side--tel"><?= $user['phone_number'] ?></span>
+                            <span class="out-side--city"><?= $user['address'] ?></span>
+                        </div>
+
+                        <div class="out-side--perfil--three-icon">
+
+                            <span id="user-trash"><i class="fas fa-trash"></i></span>
+                            <span id="user-todo"><i class="fas fa-square"></i></span>
+                            <span id="user-attended"><i class="fas fa-check"></i></span>
+
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+
+    </div>
+</div>
+
+<div class="aside-container">
+    <button>
+        <i class="fas fa-chevron-left"></i>
+    </button>
+</div>
+
+<script src="/assets/js/main-attended.js"></script>

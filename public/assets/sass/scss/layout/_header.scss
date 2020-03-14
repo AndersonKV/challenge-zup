@@ -1,0 +1,73 @@
+header {
+  background: #0f2027;
+
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 3fr 150px 1fr;
+    background: #0f2027;
+    padding: 15px;
+
+    max-width: 1240px !important;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    // display: flex;
+    // justify-content: space-between;
+  }
+
+  ul div:nth-child(1) {
+    //background-color: aqua;
+  }
+  ul div:nth-child(1) a {
+    //background-color: red;
+    display: inline-flex;
+    font-size: 2em;
+    text-decoration: none;
+    color: white;
+  }
+
+  ul div:nth-child(2) {
+    //background-color: powderblue;
+  }
+  ul div:nth-child(2) i {
+    padding: 9.6px;
+    font-size: 20px;
+    position: absolute;
+    cursor: pointer;
+    color: #b8b8b8;
+  }
+  ul div:nth-child(2) input {
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100%;
+    text-indent: 30px;
+    border: 1px solid white;
+  }
+  ul div:nth-child(2) input::placeholder {
+    font-weight: bold;
+    color: rgb(121, 119, 119);
+  }
+  ul div:nth-child(3) {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: -80px;
+  }
+  ul div:nth-child(3) a {
+    //background-color: red;
+    font-size: 1em;
+    text-decoration: none;
+    color: white;
+  }
+
+  ul div:nth-child(4) {
+    //background-color: antiquewhite;
+    text-align: right;
+    color: white;
+  }
+  ul div:nth-child(4) i {
+    font-size: 2.3em;
+  }
+}
