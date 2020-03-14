@@ -8,4 +8,6 @@ O projeto consite criar uma conta com informações que vão ser exibidas na bus
 <img src="layout2.png"/>
 
 Para rodar basta baixar os arquivos e na pasta public iniciar o servidor, no terminal "php -S localhost:8080"<br>
-iniciar também o apache e mysql
+iniciar também o apache e mysql<br>
+
+todas as informações são fantasia e você pode entrar pelo email:pernalonga@gmail.com senha:123
